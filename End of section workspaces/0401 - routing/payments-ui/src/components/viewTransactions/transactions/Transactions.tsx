@@ -84,7 +84,7 @@ const Transactions = (props: TransactionsProps) => {
     }, []);
 
     useEffect( () => {
-        if (props.selectedOrderId != "") {
+        if (props.selectedOrderId !== "") {
             loadDataForOrder(props.selectedOrderId);
         }
 
@@ -95,7 +95,7 @@ const Transactions = (props: TransactionsProps) => {
             {loading && <p className="loadingMessage">The data is loading please wait...</p>}
             {
                 !loading && <div>
-                    {props.selectedOrderId == "" && <div className="transactionsCountrySelector">
+                    {props.selectedOrderId === "" && <div className="transactionsCountrySelector">
                         Select country: {countrySelector}
                     </div>
                     }

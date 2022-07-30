@@ -1,13 +1,11 @@
 import './Transactions.css';
 import {
-    getAllCountries,
     getPaymentsForCountry,
     getPaymentsForOrder,
     PaymentType
 } from "../../../data/DataFunctions";
-import {ChangeEvent, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import TransactionTableRow from "./TransactionTableRow";
-import {useNavigate, useSearchParams} from 'react-router-dom';
 import CountriesSelector from "./CountriesSelector";
 
 type TransactionsProps = { selectedOrderId: string };
@@ -16,19 +14,10 @@ const Transactions = (props: TransactionsProps) => {
 
     const [payments, setPayments] = useState<PaymentType[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
-
-    const [searchParams, setSearchParams] = useSearchParams();
-    const country = searchParams.get("country");
-    const [countries, setCountries] = useState<string[]>(["--select--"]);
-    const countryOptions: JSX.Element[] = countries.map(c => <option key={c} value={c}>{c}</option>);
-
-    const [selectedCountry, setSelectedCountry] = useState<string>(country != null ? country : countries[0]);
-
-    const navigate = useNavigate();
+    const [selectedCountry, setSelectedCountry] = useState<string>("");
 
     const loadDataForCountry = (country: string) => {
         setLoading(true);
-        setSearchParams({"country": country});
         getPaymentsForCountry(country)
             .then(response => {
                 setPayments(response.data);
@@ -54,7 +43,7 @@ const Transactions = (props: TransactionsProps) => {
     };
 
     useEffect(() => {
-        if (props.selectedOrderId != "") {
+        if (props.selectedOrderId !== "") {
             loadDataForOrder(props.selectedOrderId);
         }
 
@@ -65,7 +54,7 @@ const Transactions = (props: TransactionsProps) => {
             {loading && <p className="loadingMessage">The data is loading please wait...</p>}
 
             <div>
-                {props.selectedOrderId == "" &&  <CountriesSelector setSelectedCountry={loadDataForCountry} setLoaded={() => setLoading(false)}/>
+                {props.selectedOrderId === "" &&  <CountriesSelector setSelectedCountry={loadDataForCountry} setLoaded={() => setLoading(false)}/>
                 }
                 <table className="transactionsTable">
                     <thead>

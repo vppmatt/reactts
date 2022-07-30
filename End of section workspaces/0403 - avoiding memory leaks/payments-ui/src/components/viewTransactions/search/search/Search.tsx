@@ -11,7 +11,7 @@ const Search = (props : SearchProps) => {
     const [touched, setTouched] = useState<boolean>(false);
     const navigate = useNavigate();
 
-    if (props.selectedOrderId != "" && props.selectedOrderId != searchTerm) {
+    if (props.selectedOrderId !== "" && props.selectedOrderId !== searchTerm) {
         setSearchTerm(props.selectedOrderId);
     }
 

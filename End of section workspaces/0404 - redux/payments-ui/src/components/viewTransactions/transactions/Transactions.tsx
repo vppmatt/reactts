@@ -1,15 +1,11 @@
 import './Transactions.css';
 import {
-    getAllCountries,
     getPaymentsForCountry,
     getPaymentsForOrder,
     PaymentType
 } from "../../../data/DataFunctions";
-import {ChangeEvent, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import TransactionTableRow from "./TransactionTableRow";
-import {useNavigate, useSearchParams} from 'react-router-dom';
-import {useSelector} from "react-redux";
-import {PaymentsStoreType} from "../../../store/store";
 import CountriesSelector from "./CountriesSelector";
 
 type TransactionsProps = { selectedOrderId: string };
@@ -48,7 +44,7 @@ const Transactions = (props: TransactionsProps) => {
     };
 
     useEffect(() => {
-        if (props.selectedOrderId != "") {
+        if (props.selectedOrderId !== "") {
             loadDataForOrder(props.selectedOrderId);
         }
 
@@ -59,7 +55,7 @@ const Transactions = (props: TransactionsProps) => {
             {loading && <p className="loadingMessage">The data is loading please wait...</p>}
 
             <div>
-                {props.selectedOrderId == "" && <CountriesSelector setSelectedCountry={loadDataForCountry} setLoaded={() => setLoading(false)}/>
+                {props.selectedOrderId === "" && <CountriesSelector setSelectedCountry={loadDataForCountry} setLoaded={() => setLoading(false)}/>
                 }
                 <table className="transactionsTable">
                     <thead>

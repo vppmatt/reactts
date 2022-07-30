@@ -1,6 +1,6 @@
 import './Search.css';
 import {useState} from "react";
-import {useNavigate, useParams} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 type SearchProps ={selectedOrderId : string, setSelectedOrderId :(orderId : string) => void };
 
@@ -11,7 +11,7 @@ const Search = (props : SearchProps) => {
     const [touched, setTouched] = useState<boolean>(false);
     const navigate = useNavigate();
 
-    if (props.selectedOrderId != "" && props.selectedOrderId != searchTerm) {
+    if (props.selectedOrderId !== "" && props.selectedOrderId !== searchTerm) {
         setSearchTerm(props.selectedOrderId);
     }
 

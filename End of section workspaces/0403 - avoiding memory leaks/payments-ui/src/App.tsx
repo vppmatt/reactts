@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import './App.css';
 import PageHeader from "./components/pageHeader/PageHeader";
 import AddTransaction from "./components/addTransaction/AddTransaction";
@@ -19,8 +19,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<PageNotFound />} />
 
-            //This is just an example of how to match multiple paths to 1 route
-            {["a","b"].map( (pathMatcher, idx) => <Route key={idx} path={pathMatcher}element={<ViewTransactionsPage />} /> )}
+            {//This is just an example of how to match multiple paths to 1 route
+            ["a","b"].map( (pathMatcher, idx) => <Route key={idx} path={pathMatcher}element={<ViewTransactionsPage />} /> )}
         </Routes>
       </BrowserRouter>
   );
