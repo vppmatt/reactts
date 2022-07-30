@@ -1,0 +1,9 @@
+.searchBox {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1.2em;
+}
+
+.searchBox label, input, button {
+    margin: 10px;
+}
