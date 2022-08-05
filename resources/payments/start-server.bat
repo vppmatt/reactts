@@ -1,5 +1,7 @@
-echo off
 if not exist paymentgateway-standalone\ (
+call git clone https://github.com/vppmatt/paymentgateway-standalone.git
+cd paymentgateway-standalone
+) else if not exist paymentgateway-standalone\.gitignore  (
 call git clone https://github.com/vppmatt/paymentgateway-standalone.git
 cd paymentgateway-standalone
 ) else (
