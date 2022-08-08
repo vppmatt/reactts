@@ -1,0 +1,28 @@
+<form className="addTransactionsForm">
+      <h2>New transaction</h2>
+      <label htmlFor="orderId">Order Id</label>
+      <input type="text" id="orderId"/>
+      <br/>
+      <label htmlFor="date">Date</label>
+      <input type="date" id="date"/>
+      <br/>
+      <label htmlFor="country">Country</label>
+      <input type="text"  id="country" />
+      <br/>
+      <label htmlFor="currency">Amount</label>
+      <input type="text"  id="currency" />
+      <br/>
+      <label htmlFor="amount">Amount</label>
+      <input type="text"  id="amount" />
+      <br/>
+      <label htmlFor="taxCode">Tax Code</label>
+      <input type="text"  id="taxCode" />
+      <br/>
+      <label htmlFor="amount">Tax Rate</label>
+      <input type="text"  id="taxRate" />
+      <br/>
+      <label htmlFor="type">Type</label>
+      <input type="text"  id="type" />
+      <br/>
+      <button type="submit">Save</button>
+</form>
