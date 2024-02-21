@@ -7,7 +7,3 @@
 .searchBox label, input, button {
     margin: 10px;
 }
-
-.searchBoxError {
-    border: 2px solid #f00;
-}

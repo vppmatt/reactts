@@ -16,9 +16,3 @@
     max-width: fit-content;
     margin-top: 50px;
 }
-
-.loadingMessage {
-    margin-top: 10px;
-    text-align: center;
-    color: #f00;
-}
