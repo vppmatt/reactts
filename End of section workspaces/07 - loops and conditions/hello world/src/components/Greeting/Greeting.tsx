@@ -1,7 +1,7 @@
-import { ReactElement, useState } from 'react';
+import { useState } from 'react';
 import './Greeting.css';
 
-const Greeting = (props: GreetingProps) : ReactElement => {
+const Greeting = (props: GreetingProps) : JSX.Element => {
     
     const [currentName, setCurrentName] = useState<string>(props.name);
 

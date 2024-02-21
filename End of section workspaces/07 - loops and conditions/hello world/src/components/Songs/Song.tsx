@@ -1,7 +1,6 @@
-import { ReactElement } from "react";
 import { SongProps } from "./SongTypes";
 
-const Song = (props: SongProps) : ReactElement => {
+const Song = (props: SongProps) : JSX.Element => {
 
     console.log("Song is running with properties ", props);
 

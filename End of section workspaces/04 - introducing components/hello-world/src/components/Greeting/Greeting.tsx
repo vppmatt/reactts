@@ -1,7 +1,6 @@
-import { ReactElement } from 'react';
 import './Greeting.css';
 
-const Greeting = (props: GreetingProps) : ReactElement => {
+const Greeting = (props: GreetingProps) : JSX.Element => {
 
     return (
         <div>

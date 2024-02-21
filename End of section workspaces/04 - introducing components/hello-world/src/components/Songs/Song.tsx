@@ -1,6 +1,4 @@
-import { ReactElement } from "react";
-
-const Song = (props: SongProps) : ReactElement => {
+const Song = (props: SongProps) : JSX.Element => {
     return (<li>{props.title} by {props.artist}</li>);
  }
  

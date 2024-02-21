@@ -1,8 +1,8 @@
 import Song from './Song';
-import { ReactElement, useState } from 'react';
+import { useState } from 'react';
 import { SongType } from './SongTypes';
 
-const SongList = () : ReactElement => {
+const SongList = () : JSX.Element => {
 
     const [visible, setVisible] = useState<boolean>(false);
 

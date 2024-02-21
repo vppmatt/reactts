@@ -1,0 +1,386 @@
+<HTML>
+	<head>
+		<script>
+		
+
+			function getHeadersForCurl() {
+				var header1include = document.getElementById("header1include").checked;
+				var header2include = document.getElementById("header2include").checked;
+				var header3include = document.getElementById("header3include").checked;
+				var header4include = document.getElementById("header4include").checked;
+
+				var header1key = document.getElementById("header1key").value;
+				var header2key = document.getElementById("header2key").value;
+				var header3key = document.getElementById("header3key").value;
+				var header4key = document.getElementById("header4key").value;
+
+				var header1value = document.getElementById("header1value").value;
+				var header2value = document.getElementById("header2value").value;
+				var header3value = document.getElementById("header3value").value;
+				var header4value = document.getElementById("header4value").value;
+
+				var includeStatus = document.getElementById("includeStatus").checked;
+
+				var userPassInclude = document.getElementById("userPassInclude").checked;
+				var userPassU = document.getElementById("userPassU").value;
+				var userPassP = document.getElementById("userPassP").value;
+
+				var result = " ";
+				if (header1include === true) {
+					result += '-H "' + header1key + ': ' + header1value + '" ';
+				}
+
+				if (header2include === true) {
+					result += '-H "' + header2key + ': ' + header2value + '" ';
+				}
+
+				if (header3include === true) {
+					result += '-H "' + header3key + ': ' + header3value + '" ';
+				}
+
+				if (header4include === true) {
+					result += '-H "' + header4key + ': ' + header4value + '" ';
+				}
+
+				if (includeStatus === true) {
+					result += '-i ';
+				}
+
+				if (userPassInclude === true) {
+					result += '-u ' + userPassU + ":" + userPassP + ' '
+				}
+
+				return result
+			}
+
+
+			function getPayload(forCurl) {
+				var payload1k = document.getElementById("payload1k").value;
+				var payload1v = document.getElementById("payload1v").value;
+				var payload2k = document.getElementById("payload2k").value;
+				var payload2v = document.getElementById("payload2v").value;
+				var payload3k = document.getElementById("payload3k").value;
+				var payload3v = document.getElementById("payload3v").value;
+				var payload4k = document.getElementById("payload4k").value;
+				var payload4v = document.getElementById("payload4v").value;
+				var payload5k = document.getElementById("payload5k").value;
+				var payload5v = document.getElementById("payload5v").value;
+				var payload6k = document.getElementById("payload6k").value;
+				var payload6v = document.getElementById("payload6v").value;
+				var payload7k = document.getElementById("payload7k").value;
+				var payload7v = document.getElementById("payload7v").value;
+				var payload8k = document.getElementById("payload8k").value;
+				var payload8v = document.getElementById("payload8v").value;
+				var payload9k = document.getElementById("payload9k").value;
+				var payload9v = document.getElementById("payload9v").value;
+				
+				if (payload1k === "" && payload2k === "" && payload3k === "" && 
+					payload4k === "" && payload5k === "" && payload6k === "" && 
+					payload7k === "" && payload8k === "" && payload9k === "") {
+					return "";
+				}
+				else {
+					var result = '';
+					if (forCurl) {
+						result = "-d '{";
+					}
+					else {
+						result = " {";	
+					} 
+					if (payload1k !== "") {
+						if (isNaN(payload1v)) {
+								result += '\"' + payload1k + '\":\"' + payload1v + '\",';
+							}
+							else {
+								result += '\"' + payload1k + '\":' + payload1v + ',';	
+							}
+					}
+
+					if (payload2k !== "") {
+						if (isNaN(payload2v)) {
+								result += '\"' + payload2k + '\":\"' + payload2v + '\",';
+							}
+							else {
+								result += '\"' + payload2k + '\":' + payload2v + ',';	
+							}
+					}				
+
+					if (payload3k !== "") {
+						if (isNaN(payload3v)) {
+								result += '\"' + payload3k + '\":\"' + payload3v + '\",';
+							}
+							else {
+								result += '\"' + payload3k + '\":' + payload3v + ',';	
+							}
+					}
+
+					if (payload4k !== "") {
+						if (isNaN(payload4v)) {
+								result += '\"' + payload4k + '\":\"' + payload4v + '\",';
+							}
+							else {
+								result += '\"' + payload4k + '\":' + payload4v + ',';	
+							}
+					}
+
+					if (payload5k !== "") {
+						if (isNaN(payload5v)) {
+								result += '\"' + payload5k + '\":\"' + payload5v + '\",';
+							}
+							else {
+								result += '\"' + payload5k + '\":' + payload5v + ',';	
+							}
+					}
+
+					if (payload6k !== "") {
+						if (isNaN(payload6v)) {
+								result += '\"' + payload6k + '\":\"' + payload6v + '\",';
+							}
+							else {
+								result += '\"' + payload6k + '\":' + payload6v + ',';	
+							}
+					}
+
+					if (payload7k !== "") {
+						if (isNaN(payload7v)) {
+								result += '\"' + payload7k + '\":\"' + payload7v + '\",';
+							}
+							else {
+								result += '\"' + payload7k + '\":' + payload7v + ',';	
+							}
+					}
+
+					if (payload8k !== "") {
+						if (isNaN(payload8v)) {
+								result += '\"' + payload8k + '\":\"' + payload8v + '\",';
+							}
+							else {
+								result += '\"' + payload8k + '\":' + payload8v + ',';	
+							}
+					}	
+					if (payload9k !== "") {
+						if (isNaN(payload9v)) {
+								result += '\"' + payload9k + '\":\"' + payload9v + '\",';
+							}
+							else {
+								result += '\"' + payload9k + '\":' + payload9v + ',';	
+							}
+					}																																				
+					result = result.slice(0, -1)  + "}";
+					if(forCurl) result += "'";
+					return result;
+					}
+			}
+
+
+			function generateAPICommand(sendToServer) {
+				var url = document.getElementById("url").value;
+				var method = document.getElementById("method").value;
+				var curl =  document.getElementById("curl");
+				var payload = getPayload(true);
+				var jsonPayload = payload !== "" ? JSON.stringify(payload) : '';
+				var curlCommand = "CURL -X " + method + ' ' + jsonPayload + getHeadersForCurl() + url;
+				curl.value = curlCommand;
+				if(sendToServer) {
+					sendRestRequest(method,url,getPayload(false));	
+				} 
+				
+			}
+
+			function sendRestRequest(method, url, data) {
+
+
+				var headersDIV =  document.getElementById("headers");
+				var responseDIV =  document.getElementById("response");
+				responseDIV.innerHTML = "sending...";
+
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+         				if (this.readyState == 4 && this.status == 200) {
+         					headersDIV.innerHTML = `status: 200<br>${this.getAllResponseHeaders()}`;
+             				var displayText = this.responseText;
+         					if (this.getAllResponseHeaders().includes("json")) {
+
+         						displayText =  "<pre>" + JSON.stringify(JSON.parse(this.responseText), null, 2) + "</pre>";
+         					}
+         					else if (this.getAllResponseHeaders().includes("xml")) {
+         						displayText =  '<textarea rows="20" cols="70" readonly style="border:none; overflow:scroll">' + this.responseText.replace(/&/g, '&amp;')
+         							.replace(/</g, '&lt;')
+         							.replace(/>/g, '&gt;')
+         							.replace(/"/g, '&quot;') 
+         							+ "</textarea>";
+         					}
+             				responseDIV.innerHTML =   displayText ;
+
+         				}
+         				else {
+         					responseDIV.innerHTML =  "<p style='color:#f00;'> ERROR " + this.status + "</p><p style='color:#f00;'>" + this.response + "</p>" ;
+         				}
+    				};
+    				xhttp.open(method, url, true);
+
+				var header1include = document.getElementById("header1include").checked;
+				var header2include = document.getElementById("header2include").checked;
+				var header3include = document.getElementById("header3include").checked;
+				var header4include = document.getElementById("header4include").checked;
+
+				var header1key = document.getElementById("header1key").value;
+				var header2key = document.getElementById("header2key").value;
+				var header3key = document.getElementById("header3key").value;
+				var header4key = document.getElementById("header4key").value;
+
+				var header1value = document.getElementById("header1value").value;
+				var header2value = document.getElementById("header2value").value;
+				var header3value = document.getElementById("header3value").value;
+				var header4value = document.getElementById("header4value").value;
+
+				if(header1include === true) xhttp.setRequestHeader(header1key, header1value);
+				if(header2include === true) xhttp.setRequestHeader(header2key, header2value);
+				if(header3include === true) xhttp.setRequestHeader(header3key, header3value);
+				if(header4include === true) xhttp.setRequestHeader(header4key, header4value);
+
+
+    				xhttp.send(data);
+					responseDIV.innerHTML = "awaiting response...";
+
+			}
+
+		</script>
+
+		<style>
+			label {
+				width: 200px;
+				display: block;
+    			float: left;
+			}
+			h4 {
+				margin-top: 40px;
+			}
+		</style>
+
+
+	</head>
+
+	<body>
+		<h1>Curl command generator</h1>
+
+		<p>
+			<label for="url">URL</label>
+			<input id="url" value="http://localhost:8080/api" style="width: 400px;"/>
+		</p>
+
+		<p>
+			<label for="action">Method</label>
+			<select id="method">
+				<option value="GET">Get</option>
+				<option value="POST">Post</option>
+				<option value="PUT">Put</option>
+				<option value="DELETE">Delete</option>
+			</select>
+		</p>
+
+		<h4>Headers</h4>
+		<p><em>Tick to include</em>
+		<p>
+			<label for="header1key">Key/Value</label>
+			<input type="checkbox" id="header1include" checked /> 
+			<input id="header1key" value="Accept"/>
+			<input id="header1value" value="application/json"/>
+		</p>
+		<p>
+			<input type="checkbox" id="header2include" checked />
+			<label for="header2key">Key/Value</label>
+			<input id="header2key" value="Content-Type"/>
+			<input id="header2value" value="application/json"/>
+		</p>
+		<p>
+			<input type="checkbox" id="header3include" />
+			<label for="header3key">Key/Value</label>
+			<input id="header3key" value=""/>
+			<input id="header3value" value=""/>
+		</p>
+		<p>
+			<input type="checkbox" id="header4include" />
+			<label for="header4key">Key/Value</label>
+			<input id="header4key" value=""/>
+			<input id="header4value" value=""/>
+		</p>
+
+		<h4>Response options</h4>
+		<p>
+				<label for="includeStatus">Show status in response</label>
+				<input type="checkbox" id="includeStatus" />
+		</p>
+		<p>
+				<input type="checkbox" id="userPassInclude" />
+				<label for="userPass">Username and password</label>
+				<input id="userPassU" value=""/>
+				<input id="userPassP" value=""/>
+		</p>
+		
+
+		<h4>Payload</h4>
+		<div id="payload">
+			<p><em>Leave key blank to ignore</em></p>
+			<p>
+				<label for="payload1">Field 1</label>
+				<input id="payload1k" value=""/>
+				<input id="payload1v" value=""/>
+			</p>
+			<p>
+				<label for="payload2">Field 2</label>
+				<input id="payload2k" value=""/>
+				<input id="payload2v" value=""/>
+			</p>
+			<p>
+				<label for="payload3">Field 3</label>
+				<input id="payload3k" value=""/>
+				<input id="payload3v" value=""/>
+			</p>
+			<p>
+				<label for="payload4">Field 4</label>
+				<input id="payload4k" value=""/>
+				<input id="payload4v" value=""/>
+			</p>
+			<p>
+				<label for="payload5">Field 5</label>
+				<input id="payload5k" value=""/>
+				<input id="payload5v" value=""/>
+			</p>
+			<p>
+				<label for="payload6">Field 6</label>
+				<input id="payload6k" value=""/>
+				<input id="payload6v" value=""/>
+			</p>
+			<p>
+				<label for="payload7">Field 7</label>
+				<input id="payload7k" value=""/>
+				<input id="payload7v" value=""/>
+			</p>
+			<p>
+				<label for="payload8">Field 8</label>
+				<input id="payload8k" value=""/>
+				<input id="payload8v" value=""/>
+			</p>
+			<p>
+				<label for="payload9">Field 9</label>
+				<input id="payload9k" value=""/>
+				<input id="payload9v" value=""/>
+			</p>			
+    	
+		</div>
+
+
+		<button style="margin-top:40px;" onClick="generateAPICommand(false);">Generate Curl Command only</button>
+		<button style="margin-top:40px;" onClick="generateAPICommand(true);">Generate Curl Command and send to server</button>
+
+		<h4>Curl command</h4>
+		<textarea id="curl" style="border: 1px solid #000; width: 600px;" rows=10> </textarea>
+
+		<h4>Response from server</h4>
+		<h6>Headers</h6>
+		<div id="headers"></div>
+		<h6>Response</h6>
+		<div id="response" style="border: 1px solid #000; width: 600px; min-height: 100px;"></div>
+	</body>
+</HTML>

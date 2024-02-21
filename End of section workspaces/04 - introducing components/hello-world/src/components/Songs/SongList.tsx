@@ -1,7 +1,6 @@
 import Song from './Song';
-import { ReactElement } from 'react';
 
-const SongList = () : ReactElement => {
+const SongList = () : JSX.Element => {
     return (
         <div>
             <h2>Your favourite songs are:</h2>
