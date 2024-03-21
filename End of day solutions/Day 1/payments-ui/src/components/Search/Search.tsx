@@ -1,6 +1,6 @@
 import './Search.css';
 
-const Search = () => {
+const Search = () : JSX.Element => {
 
     return (
         <div className="searchBox">

@@ -1,6 +1,6 @@
 
 
-const Menu = () => {
+const Menu = () : JSX.Element => {
     return (
         <ul className="nav">
             <li>Find a transaction</li>

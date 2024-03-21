@@ -1,7 +1,7 @@
 import './pageHeader.css';
 import Menu from "./Menu";
 
-const PageHeader = () => {
+const PageHeader = () : JSX.Element => {
     return (
         <div className="pageHeader">
             <h1>Payments Application</h1>
