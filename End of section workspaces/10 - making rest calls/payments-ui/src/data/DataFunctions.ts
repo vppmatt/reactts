@@ -12,14 +12,10 @@ export type PaymentType =
         type: string}
 
 
-let serverURL = "https://payments.multicode.uk";
-
-if (process.env.APP_SERVER_URL) {
-    serverURL = process.env.APP_SERVER_URL;
-}
+const serverURL = import.meta.env.VITE_APP_SERVER_URL; 
 
 export const getAllPaymentsRestVersion = () :void  => {
-    const responsePromise : Promise<Response> = fetch("https://payments.multicode.uk/api/payment", { method: "GET", headers : {'Accept': 'application/json'} });
+    const responsePromise : Promise<Response> = fetch(`${serverURL}`, { method: "GET", headers : {'Accept': 'application/json'} });
     
     responsePromise.then(response => {
         response.json().then (data => {

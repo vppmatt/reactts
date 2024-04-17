@@ -1,0 +1,1 @@
+npm install jest @testing-library/react ts-jest @types/jest ts-node @testing-library/jest-dom jest-environment-jsdom @testing-library/jest-dom identity-obj-proxy --save-dev

@@ -1,6 +1,7 @@
 import {render, screen} from "@testing-library/react";
 import Transactions from "./Transactions";
 import {BrowserRouter} from "react-router-dom";
+import '@testing-library/jest-dom';
 
 jest.mock('../../../data/DataFunctions', () => {
     return {

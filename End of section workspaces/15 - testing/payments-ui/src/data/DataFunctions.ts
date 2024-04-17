@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 
 export type PaymentType =
-    {id: number | null,
+    {id: number | null
     amount: number,
         country: string,
         currency: string,
@@ -12,11 +12,8 @@ export type PaymentType =
         type: string}
 
 
-let serverURL = "https://payments.multicode.uk";
+const serverURL = import.meta.env.VITE_APP_SERVER_URL;
 
-if (process.env.APP_SERVER_URL) {
-    serverURL = process.env.APP_SERVER_URL;
-}
 
 export const getAllPayments = () : Promise<AxiosResponse<PaymentType[]>> => {
     const transactionsPromise = axios<PaymentType[]>({ url : `${serverURL}/api/payment`, method: "GET", headers : {'Accept': 'application/json'} });

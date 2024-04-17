@@ -1,6 +1,7 @@
 import {render, screen} from "@testing-library/react";
 import Search from "./Search";
 import userEvent from "@testing-library/user-event";
+import '@testing-library/jest-dom';
 
 describe.only('css applied correctly for search box validation', () => {
 
