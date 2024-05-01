@@ -35,7 +35,7 @@ const Transactions  = () : JSX.Element => {
           <tbody>
 	          {payments
                 .filter( payment => payment.country === selectedCountry)
-                .map((payment) => <PaymentTableRow key={payment.id} {...payment} />)}
+                .map((payment) => <PaymentTableRow key={payment.id} payment={payment} />)}
           </tbody>
       </table>
       </>
